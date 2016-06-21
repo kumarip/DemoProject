@@ -1,0 +1,86 @@
+
+<!DOCTYPE HTML>
+<html>	
+<head>
+  <title>USER REGISTRATION FORM</title>
+  <script src="jquery-1.12.4.min.js"></script>
+	<script src="jquery.js"></script>
+	<script src="php/displayUser.js"></script>
+	
+</head>    
+  <body>
+    <div id="div1" style="display: block; ">
+	  <h1>User Registration form</h1>
+	  <form name="register" action="" method="post">
+		<table id="tableId">
+		<tbody>
+		  <tr>
+				<tr>
+				<td>
+					<input type="hidden" name="userId" id="userId" value="1">
+				</td>
+				</tr>
+			  <td>First Name </td>
+			  <td>
+				  <input type="text" name="firstName" id="firstName">
+				  <span id="fname"></span>
+			  </td>
+			</tr>
+			<tr>
+			  <td>Last Name </td>
+			  <td>
+			    <input type="text" name="lastName" id="lastName">
+				  <span id="lname"></span>
+			  </td>
+			</tr>
+			<tr>
+				<td>Email ID </td>
+				<td>
+				  <input type="text" name="email" id="email">
+				  <span id="eml"></span>
+				</td>
+			</tr>
+			<tr>
+				<td> Gender </td>
+				<td>
+				  <input type="radio" id="male" name="gender" value="male">Male
+				  <input type="radio" id="female" name="gender"value="female">Female     </input>
+				  <span id="gen"></span>
+				</td>
+			</tr>
+			<tr>
+				<td> Address </td>
+				<td>
+					<textarea rows="4" cols="20" id="address" name="address"></textarea>
+					<span id="addrs"></span>
+				</td>
+			</tr>
+			<tr>
+				<td colspan="2">
+					<input type="button" value="Submit" id="validate">
+					<input type="button" value="Update" id="updateUser">
+				</td>
+			</tr>
+		</tbody>
+		</table>	
+		</form>
+    </div>
+		<hr>
+		<hr>
+    <div id="div2">
+    <div id="div3" style="text-align: center;"><h2>User Details</h2></div>
+    <fieldset>  
+		<table id="mytable" style="table-layout: fixed; width:100%;">	
+      <tr>
+				<td>First Name</td>
+			  <td>Last Name</td>
+				<td>Email ID</td>
+				<td>Gender</td>
+				<td>Address</td>
+				<td>Action</td>
+			</tr>
+    </table>
+		</fieldset>
+    </div>
+  </body>
+</html>

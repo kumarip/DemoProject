@@ -1,0 +1,8 @@
+<?php
+
+require_once ('Filemaker/Filemaker.php');
+$fm = new FileMaker('TimeTracker.fp7', '127.0.0.1', 'esmith', 'f!r3crack3r');
+$deleteRecord = $fm->newDeleteCommand('associate_layout', '140');
+$result = $deleteRecord->execute();
+
+?>
