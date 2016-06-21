@@ -1,0 +1,24 @@
+[
+ {
+  "fname" : "Kumari",
+  "lname" : "Pallavi",
+  "email" : "pallavi@gmail.com",
+  "gender" : "female",
+  "address" : "bksc"
+ },
+ {
+  "fname" : "bhargawi",
+  "lname" : "sinha",
+  "email" : "bhargawi@gmail.com",
+  "gender" : "female",
+  "address" : "bgp"
+ },
+ {
+  "fname" : "Anshu",
+  "lname" : "Pathak",
+  "email" : "anshu@gmail.com",
+  "gender" : "male",
+  "address" : "dlh"
+  }
+]
+

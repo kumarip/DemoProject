@@ -1,0 +1,22 @@
+body{
+background-color:skyblue;
+color:black;
+
+}
+#div1{
+    background-color:lightpink;
+    color:black;
+    border:double;
+}
+#div2{
+    background-color:yellow;
+    color: black;
+}
+#div3{
+    background-color:olive;
+    text-align: center;
+}
+#mytable{
+    width:100%;
+    background-color: whitesmoke;
+}

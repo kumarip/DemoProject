@@ -1,0 +1,95 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>USER REGISTRATION FORM</title>
+	  <style>
+        body {
+              background-color: grey;
+             }
+        #mytable {
+               border-collapse: collapse;
+               width: 100%;
+               border: 1px solid #ddd;
+			   padding:20px;
+             }  
+		#tr2 th {
+			height: 20px;
+			border: 1px solid #ddd;
+            padding: 15px;
+		   } 
+	    p {
+			text-align: center;
+		  } 
+    </style>
+	<script src="jquery-1.12.4.min.js"></script>  
+</head>    
+
+    <body style="background-color:skyblue; color:black;">
+        <div id="div1" style="background-color:lightpink; color:black;">
+			<h1>User Registration form</h1>
+			 <form name="register" action="" method="post">
+		   
+				<table id="tableId">
+					<tr>
+						<td>First Name  </td>
+						<td>
+							<input type="text" name="firstname" id="firstname">
+							<span id="fname"></span>
+						</td>
+					</tr>
+					<tr>
+						<td>Last Name </td>
+						<td>
+							<input type="text" name="lastname" id="lastname">
+						    <span id="lname"></span>
+						</td>
+					</tr>
+					<tr>
+						<td>Email ID </td>
+						<td>
+						    <input type="text" name="email" id="email">
+						    <span id="eml"></span>
+						</td>
+					</tr>
+					<tr>
+						<td> Gender </td>
+						<td>
+							<input type="radio" id="male" name="gender" value="male">Male
+							<input type="radio" id="female" name="gender"value="female">Female
+							<span id="gen"></span>
+						</td>
+					</tr>
+					<tr>
+						<td> Address </td>
+						<td>
+						    <textarea rows="4" cols="20" id="add"></textarea>
+						    <span id="addr"></span>
+						</td>
+					</tr>
+					<tr>
+						<td colspan="2">
+						<input type="button" id="rowButton" value="Submit">
+						<input type="button" id="updateButton" value="Update">
+						</td>
+					</tr>
+				</table>
+			</form>
+		
+        </div>
+        <div id="div2" style="background-color:grey;">
+        <div text-align: center><h1>User Details</h1></div>
+        <table id="mytable">
+            <tr id="tr2">
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Email ID</th>
+                <th>Gender</th>
+                <th>Address</th>
+                <th>Action</th>
+            </tr>        
+        </table>
+        </div>
+        <script src="ajx.js"></script>
+		<script src="display.js"></script>
+    </body> 
+    </html>

@@ -1,0 +1,72 @@
+<!DOCTYPE HTML>
+<head>
+    <title>USER REGISTRATION FORM</title>
+</head>    
+
+    <body style="background-color:skyblue; color:black;">
+        <div id="div1" style="background-color:lightpink; color:black;">
+			<h1>User Registration form</h1>
+			 <form name="register" action="" method="post">
+		   
+				<table id="tableId">
+					<tr>
+						<td>First Name  </td>
+						<td>
+							<input type="text" name="firstname" id="firstname">
+							<span id="fname"></span>
+						</td>
+					</tr>
+					<tr>
+						<td>
+						Last Name </td><td> <input type="text" name="lastname" id="lastname">
+						<span id="lname"></span>
+						</td>
+					</tr>
+					<tr>
+						<td>Email ID </td><td> <input type="text" name="email" id="email">
+						<span id="eml"></span>
+						</td>
+					</tr>
+					<tr>
+						<td> Gender </td>
+						<td>
+							<input type="radio" id="male" name="gender" value="male">Male
+							<input type="radio" id="female" name="gender"value="female">Female
+							<span id="gen"></span>
+						</td>
+					</tr>
+					<tr>
+						<td>
+						Address </td>
+						<td>
+						<textarea rows="4" cols="20" id="add"></textarea>
+						<span id="addr"></span>
+						</td>
+					</tr>
+					<tr>
+						<td colspan="2">
+						<input type="button" id="rowButton" value="Submit" onclick ="addrow();">
+						<input type="button" id="updateButton" value="Update" onclick ="update();">
+						</td>
+					</tr>
+				</table>
+			</form>
+		
+        </div>
+        <div id="div2" style="background-color:yellow; color: black;">
+        <div id="div3" style="background-color:olive; text-align: center;"><h1>User Details</h1></div>
+        <table id="mytable" style="width:100%; background-color: whitesmoke;">
+            <tr>
+                <td>First Name</td>
+                <td>Last Name</td>
+                <td>Email ID</td>
+                <td>Gender</td>
+                <td>Address</td>
+                <td>Action</td>
+            </tr>        
+        </table>
+        </div>
+    </body>
+    
+    <script src="js/display.js"></script>
+    </html>
