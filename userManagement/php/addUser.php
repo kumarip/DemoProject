@@ -11,7 +11,7 @@ require_once (__DIR__ . '\cred.php');
 $firstName = $_POST['firstName'];
 $lastName = $_POST['lastName'];
 $email = $_POST['email'];
-$gender = $_POST['gen'];
+$gender = $_POST['gender'];
 $address = $_POST['address'];
 $record = $fm->createRecord('User');
 console.log($fname);

@@ -72,9 +72,9 @@ $(function() {
  * @returns: null
  * **************************************************/
 $('#updateUser').on('click',function() {
-     // making a ajax call to
+     // making a ajax call
     $.ajax({
-        url: 'php/addUser.php',
+        url: 'php/updateUser.php',
         type: 'post',
         data: {
            'firstName' : $('#firstName').val(),

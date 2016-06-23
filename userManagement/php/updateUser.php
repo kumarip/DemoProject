@@ -7,27 +7,19 @@
 **/
 // Including the library files and all the crediantials;
 require_once (__DIR__ . '\cred.php');
+$userId = $_POST['userId'];
 $firstName = $_POST['firstName'];
 $lastName = $_POST['lastName'];
 $email = $_POST['email'];
-$gender = $_POST['gen'];
+$gender = $_POST['gender'];
 $address = $_POST['address'];
-$request = $fm->newFindCommand('User');
-$request->addFindCriterion('firstName', $firstName);
-$request->addFindCriterion('lastName', $lastName);
-$request->addFindCriterion('email', $email);
-$request->addFindCriterion('gender', $gender);
-$request->addFindCriterion('address', $address);
-$result = $request->execute();
-$records = $result->getRecords();
+$record = $fm->newEditCommand('User',$userId);
+$record->setField('firstName',$firstName );
+$record->setField('lastName', $lastName);
+$record->setField('email', $email);
+$record->setField('gender', $gender);
+$record->setField('address', $address);
+$result = $record->execute();
 
-foreach ($records as $record) {
-    $record->setField('firstName', '');
-    $record->setField('lastName', '');
-    $record->setField('email', '');
-    $record->setField('gender', '');
-    $record->setField('address', '');
-    $record->commit();
-}
 
 ?>

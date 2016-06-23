@@ -5,11 +5,11 @@ $(document).ready(function() {
         return;
         }
         var obj = {
-             $fname: $('#firstname').val());
-             $lname: $('#lastname').val());
-             $eml: $('#email').val());
-             $gender: $('#gender').val());
-             $address: $('#add').val());
+             $fname: $('#firstname').val();
+             $lname: $('#lastname').val();
+             $eml: $('#email').val();
+             $gender: $('#gender').val();
+             $address: $('#add').val();
         };
         $.each(obj, function(i) {
            $('#mytable').append('<tr><td>' + obj[i].fname  +'</td><td>'+ obj[i].lname + '</td><td> ' + obj[i].eml + '</td><td>' +

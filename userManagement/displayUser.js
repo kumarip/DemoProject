@@ -7,6 +7,7 @@ var USERID;
 $(document).ready(function(){
     displayUser();
     bindClickonUpdate();
+    //bindClickonSearch();
 });
 
 /*********************************
@@ -27,11 +28,14 @@ function displayUser() {
                 $('#mytable').append('<tr><td>' + this.firstName  +
                 '</td><td>'+ this.lastName + '</td><td> ' + this.email + '</td><td>' +
                 this.gender + '</td><td>' + this.address + '</td><td>' +
-                '<input type="button" value="EDIT" id="edit" onclick="editUser(' + this.userId + ');">/<input type="button" value="DELETE" onclick="deleteUser(' + this.userId + ');">' +
+                '<input type="button" value="EDIT" id="edit" onclick="editUser(' + this.userId +
+                ');">/<input type="button" value="DELETE" onclick="deleteUser(' + this.userId + ');">' +
                 '</td></tr>');
-            });   
+            });
+           
         }
     });//end of ajax call
+     
 }
 
 /********************************
@@ -69,31 +73,33 @@ function editUser(userId) {
  * @argument:
  * @param: null
  * **********************************/
-function deleteUser(USERID)
-{    $.ajax({
+function deleteUser(userId)
+{   USERID = userId;
+    $.ajax({
     url: 'php/deleteUser.php',
     type: 'post',
     data: {
-        'userId':'USERID',
+        'userId':userId,
     },
     dataType: "json",
     success: function(response) {
-        $(this).closest('tr').remove();
+        console.log(response);
+        $(this.userId).closest('tr').remove();
+
     }
 });
     
 }
 /****************************************************
  * Update the User Details
- * @argument: null
  * @param: string
  * @returns: null
  * **************************************************/
 function bindClickonUpdate() {
     $('#updateUser').on('click',function() {
-     // making a ajax call to
+     // making a ajax call to updateUser.php
     $.ajax({
-        url: 'php/addUser.php',
+        url: 'php/updateUser.php',
         type: 'post',
         data: {
            'firstName' : $('#firstName').val(),
@@ -104,13 +110,39 @@ function bindClickonUpdate() {
             'userId': USERID
            
         },
-        success: function(response) {                   
+        success: function(response) {
+
             displayUser();
         }
     });//end of ajax call
-});
-    
+    });   
 }
 
-
-
+/****************************************************
+ * Compound Search made on the table/layout
+ * @param: string
+ * @returns: null
+ * *************************************************/
+//function bindClickonSearch() {
+    $('#searchUser').keyup(function() {
+        $.ajax({
+            url: 'php/searchUser.php',
+            type: 'post',
+            dataType: "json",
+            data: {
+             'data': $('#searchElement').val(),    
+            },
+            success: function(response) {
+                console.log(response.records);
+                $.each(response.records,function() {
+                    $('#mytable').append('<tr><td>' + this.firstName  +
+                    '</td><td>'+ this.lastName + '</td><td> ' + this.email + '</td><td>' +
+                    this.gender + '</td><td>' + this.address + '</td><td>' +
+                    '<input type="button" value="EDIT" id="edit" onclick="editUser(' + this.userId +
+                    ');">/<input type="button" value="DELETE" onclick="deleteUser(' + this.userId + ');">' +
+                    '</td></tr>');
+                    });
+            }
+       });//end of ajax call
+    });
+//}

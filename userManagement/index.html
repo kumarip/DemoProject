@@ -5,7 +5,40 @@
   <title>USER REGISTRATION FORM</title>
   <script src="jquery-1.12.4.min.js"></script>
 	<script src="jquery.js"></script>
-	<script src="php/displayUser.js"></script>
+	<script src="displayUser.js"></script>
+	<style>
+		#mytable{
+			text-align: center;
+		}
+		.textSearch{
+		margin: 0;
+		padding: 5px 15px;
+		font-family: Arial, Helvetica, sans-serif;
+		font-size:14px;
+		border:1px solid #0076a3;
+		border-right:1px solid #0076a3;
+		border-top-left-radius: 5px 5px;
+		border-bottom-left-radius: 5px 5px;
+
+	}
+	.searchButton {
+		margin: 0;
+		padding: 5px 15px;
+		font-family: Arial, Helvetica, sans-serif;
+		font-size:14px;
+		outline: none;
+		cursor: pointer;
+		text-align: center;
+		text-decoration: none;
+		color: #ffffff;
+		border: solid 1px #0076a3; border-right:0px;
+		background: #0095cd;
+		background: -webkit-gradient(linear, left top, left bottom, from(#00adee), to(#0078a5));
+		background: -moz-linear-gradient(top,  #00adee,  #0078a5);
+		border-top-right-radius: 5px 5px;
+		border-bottom-right-radius: 5px 5px;
+	}
+	</style>
 	
 </head>    
   <body>
@@ -15,28 +48,23 @@
 		<table id="tableId">
 		<tbody>
 		  <tr>
-				<tr>
-				<td>
-					<input type="hidden" name="userId" id="userId" value="1">
-				</td>
-				</tr>
 			  <td>First Name </td>
 			  <td>
-				  <input type="text" name="firstName" id="firstName">
+				  <input type="text" class="textSearch" name="firstName" id="firstName" placeholder="Enter your First Name">
 				  <span id="fname"></span>
 			  </td>
 			</tr>
 			<tr>
 			  <td>Last Name </td>
 			  <td>
-			    <input type="text" name="lastName" id="lastName">
+			    <input type="text" class="textSearch" name="lastName" id="lastName" placeholder="Enter your Last Name">
 				  <span id="lname"></span>
 			  </td>
 			</tr>
 			<tr>
 				<td>Email ID </td>
 				<td>
-				  <input type="text" name="email" id="email">
+				  <input type="text" class="textSearch" name="email" id="email" placeholder="Email Address">
 				  <span id="eml"></span>
 				</td>
 			</tr>
@@ -44,21 +72,25 @@
 				<td> Gender </td>
 				<td>
 				  <input type="radio" id="male" name="gender" value="male">Male
-				  <input type="radio" id="female" name="gender"value="female">Female     </input>
+				  <input type="radio" id="female" name="gender"value="female">Female</input>
 				  <span id="gen"></span>
 				</td>
 			</tr>
 			<tr>
 				<td> Address </td>
 				<td>
-					<textarea rows="4" cols="20" id="address" name="address"></textarea>
+					<textarea rows="4" class="textSearch" cols="20" id="address" name="address" placeholder="Enter your address"></textarea>
 					<span id="addrs"></span>
 				</td>
 			</tr>
 			<tr>
 				<td colspan="2">
-					<input type="button" value="Submit" id="validate">
-					<input type="button" value="Update" id="updateUser">
+					<input type="button" value="Submit" id="validate" class="searchButton" >
+					<input type="button" value="Update" id="updateUser" class="searchButton" >
+				</td>
+				<td>
+					<input type="text" class="textSearch" name="searchElement" id="searchElement" size="21" maxlength="120">
+					<input type="button" id="searchUser" value="Search" class="searchButton">
 				</td>
 			</tr>
 		</tbody>
@@ -68,16 +100,18 @@
 		<hr>
 		<hr>
     <div id="div2">
-    <div id="div3" style="text-align: center;"><h2>User Details</h2></div>
+    <div id="div3" style="text-align: center;">
+			<h2>User Details</h2>
+		</div>
     <fieldset>  
 		<table id="mytable" style="table-layout: fixed; width:100%;">	
       <tr>
-				<td>First Name</td>
-			  <td>Last Name</td>
-				<td>Email ID</td>
-				<td>Gender</td>
-				<td>Address</td>
-				<td>Action</td>
+				<th>First Name</th>
+			  <th>Last Name</th>
+				<th>Email ID</th>
+				<th>Gender</th>
+				<th>Address</th>
+				<th>Action</th>
 			</tr>
     </table>
 		</fieldset>
