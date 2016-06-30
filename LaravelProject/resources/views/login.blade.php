@@ -5,8 +5,6 @@
 @endsection
 
 @section('header')
-    <link rel="stylesheet" type="text/css" href="asset/bootstrap-3.3.6-dist/css/bootstrap.css">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" href="design.css">
 @endsection
 
@@ -17,6 +15,7 @@
     <h2>Login User</h2></br>
         <form name="loginForm" action="{{url('/login')}}" method="post">
             <input type="hidden" name="_token" value="{{ csrf_token() }}">
+            <input type="hidden" name="id" value="">
             <label for="email" class="col-sm-2 form-control-label">Email</label>
             <input type="text" class="form-control" id="email" name="email" placeholder="email"></br></br>
             <label for="password" class="col-sm-2 form-control-label">Password</label>

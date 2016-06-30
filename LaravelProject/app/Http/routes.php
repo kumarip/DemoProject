@@ -10,18 +10,11 @@
 | and give it the controller to call when that URI is requested.
 |
 */
-/*
-Route::get('/', function () {
-    return view('welcome');
-});
-Route::get('/', function () {
-    return view('hello');
-});
-*/
 Route::get('/user/profile', [
     'as' => 'userName', 'uses' => 'loginController@getUserNames'
 ]);
 Route::get('/', 'UserController@getUserLogin');
 Route::post('/login','UserController@checkValidate');
-Route::get('/login/display/des','UserController@getUserDetail');
-
+Route::get('/login/edit/{userId}','UserController@editUserDetail');
+Route::get('/login/delete/{userId}','UserController@deleteUserDetail');
+Route::get('/login/update/{userId}','UserController@updateUserDetail');

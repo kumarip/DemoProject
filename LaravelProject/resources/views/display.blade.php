@@ -5,13 +5,11 @@
 @endsection
 
 @section('header')
-    <link rel="stylesheet" type="text/css" href="asset/bootstrap-3.3.6-dist/css/bootstrap.css">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
     
-@endsection
+    <script type="text/javascript" src="{{URL::asset('asset/js/userOperation.js')}}"></script>  
 
 @section('content')
-    <div>
+    <div class="table-responsive">
     <h1> My Profile </h1>
         <table class="table">
         @foreach($userData as $user)
@@ -21,15 +19,18 @@
                 <td>{{$user->email}}</td>
                 <td>{{$user->gender}}</td>
                 <td>{{$user->address}}</td>
-                <td><input type="button" class="btn btn-primary" value="Edit">/
-                <input type="button" class="btn btn-primary" value="Delete"></td>
-            </tr>      
+                <td><input type="button" class="btn btn-primary" value="Edit" id="editUserDetail" onclick="editUserDetail({{$user->userId}});">
+                <input type="button" class="btn btn-primary" value="Delete" id="deleteUserDetail" onclick="deleteUserDetail({{$user->userId}});"></td>         
+            </tr>
+            
         @endforeach
         </table>
+                <input type="button" class="btn btn-primary" value="Logout" onclick="logout();"></td>
+
     </div>
 @endsection
 
 @section('footer')
-    <script src="asset/bootstrap-3.3.6-dist/js/bootstrap.js"></script>
+
 @endsection
  
