@@ -5,25 +5,22 @@
 @endsection
 
 @section('header')
-    
-    <script type="text/javascript" src="{{URL::asset('asset/js/userOperation.js')}}"></script>  
+    <script type="text/javascript" src="{{URL::asset('asset/js/userOperation.js')}}"></script>
+@endsection        
 
 @section('content')
     <div class="table-responsive">
     <h1> My Profile </h1>
         <table class="table">
-        @foreach($userData as $user)
             <tr>
-                <td>{{$user->firstName}}</td>
-                <td>{{$user->lastName}}</td>
-                <td>{{$user->email}}</td>
-                <td>{{$user->gender}}</td>
-                <td>{{$user->address}}</td>
-                <td><input type="button" class="btn btn-primary" value="Edit" id="editUserDetail" onclick="editUserDetail({{$user->userId}});">
-                <input type="button" class="btn btn-primary" value="Delete" id="deleteUserDetail" onclick="deleteUserDetail({{$user->userId}});"></td>         
+                <td>{{$userData->firstName}}</td>
+                <td>{{$userData->lastName}}</td>
+                <td>{{$userData->email}}</td>
+                <td>{{$userData->gender}}</td>
+                <td>{{$userData->address}}</td>
+                <td><input type="button" class="btn btn-primary" value="Edit" id="editUserDetail" onclick="editUserDetail({{$userData->userId}});">
+                <input type="button" class="btn btn-primary" value="Delete" id="deleteUserDetail" onclick="deleteUserDetail({{$userData->userId}});"></td>         
             </tr>
-            
-        @endforeach
         </table>
                 <input type="button" class="btn btn-primary" value="Logout" onclick="logout();"></td>
 

@@ -17,4 +17,7 @@ Route::get('/', 'UserController@getUserLogin');
 Route::post('/login','UserController@checkValidate');
 Route::get('/login/edit/{userId}','UserController@editUserDetail');
 Route::get('/login/delete/{userId}','UserController@deleteUserDetail');
-Route::get('/login/update/{userId}','UserController@updateUserDetail');
+Route::post('/login/update','UserController@updateUserDetail');
+Route::get('/login/new','UserController@registerNewUser');
+Route::post('/login/new/add','UserController@addNewUser');
+Route::get('/logout','UserController@logout');

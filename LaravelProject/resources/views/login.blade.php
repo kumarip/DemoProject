@@ -6,6 +6,7 @@
 
 @section('header')
     <link rel="stylesheet" type="text/css" href="design.css">
+    <script type="text/javascript" src="{{URL::asset('asset/js/userOperation.js')}}"></script> 
 @endsection
 
 @section('content')
@@ -21,10 +22,10 @@
             <label for="password" class="col-sm-2 form-control-label">Password</label>
             <input type="password" class="form-control" id="password" name="password" placeholder="Password"></br></br>
             <div class="col-sm-offset-1 col-sm-10">
-            <input type="submit" class="btn btn-primary" value="login" id="login" name="login">
-            </div>
-                    
+            <input type="submit" class="btn btn-primary" value="login" id="login" name="login"></br></br>
+            </div>          
         </form>
+        <input type="button" class="btn btn-primary" value="Signup" name="registerNewUser" onclick="registerNewUser();">
     </div>
     </div>
     </div>
