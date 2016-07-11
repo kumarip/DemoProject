@@ -1,9 +1,0 @@
- html, body, .container-table {
-    height: 100%;
-}
-.container-table {
-    display: table;
-}
-.vertical-center-row {
-    vertical-align: middle;
-}

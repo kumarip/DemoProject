@@ -6,11 +6,10 @@
 
 @section('header')
   <script type="text/javascript" src="{{URL::asset('asset/js/userOperation.js')}}"></script>
-@stop
 
 @section('content')
   @foreach($userData as $user)
-    <form name = "editForm" action = "{{url('/login/update')}}" method="post">
+    <form name = "editForm" action = "{{url('/login/currentUser/update')}}" method="post">
       <div class="form-group row">
       <h1>Edit Your Details</h1>
         <div>
@@ -19,7 +18,7 @@
         </div>
         <div>
           <label for = "profilePic" class = "col-sm-3 form-control-label">Profile Pic</label>
-          <img src="{{ URL::to('/') }}/profilePics/{{$user->firstName}}.jpg" alt="Profile Pic" width="100" height="100"></br>  
+          <img src="{{ URL::to('/') }}/profilePics/{{$user->firstName}}.jpg"" alt="Profile Pic" width="100" height="100"></br>  
         </div>
         <div>
           <label for = "firstName" class = "col-sm-3 form-control-label">First Name</label>

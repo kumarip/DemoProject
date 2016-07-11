@@ -5,7 +5,7 @@
 @endsection
 
 @section('header')
-    <link rel="stylesheet" type="text/css" href="design.css">
+    <script type="text/css" src="{{URL::asset('asset/css/design.css')}}"></script> 
     <script type="text/javascript" src="{{URL::asset('asset/js/userOperation.js')}}"></script> 
 @endsection
 
@@ -25,7 +25,6 @@
             <input type="submit" class="btn btn-primary" value="login" id="login" name="login"></br></br>
             </div>          
         </form>
-        <input type="button" class="btn btn-primary" value="Signup" name="registerNewUser" onclick="registerNewUser();">
     </div>
     </div>
     </div>

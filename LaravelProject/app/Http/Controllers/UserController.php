@@ -16,6 +16,14 @@ use Session;
 class UserController extends Controller
 {
     /**
+    * Fetching All User Data
+    * @return = string(userData)
+    **/
+    public function getAllUser() {
+        $userData = Test::all();
+        return view('allUser', ['userData' => $userData]);
+    }
+    /**
      * Register New User
      * @param
      * @return
@@ -28,17 +36,20 @@ class UserController extends Controller
      * @param
      * @return
      **/ 
-    public function addNewUser(Request $request) {
+    public function addNewUserDetail(Request $request) {
         $user = new Test;
         $user->firstName = $request->firstName;
         $user->lastName = $request->lastName;
         $user->email = $request->email;
         $user->gender = $request->gender;
+        $user->password = $request->password;
         $user->address = $request->address;
+        $user->profilePic = $request->profilePic;
         $user->save();
-        dd($user);
-        return view('display',compact(user));
-        
+        //dd($user);
+        $this->uploadPic($request);
+        $userData = Test::all();
+        return view('allUser', ['userData' => $userData]);
     }
     /**
      * Display Login Page
@@ -54,7 +65,7 @@ class UserController extends Controller
      **/
     public function logout() {
         Session::get('sessionId');
-        Session::forget('sessionId');
+        Session::forget('sessionId');   
         return view('login');   
     }
     
@@ -63,20 +74,16 @@ class UserController extends Controller
      * @param object $request Request object
      * @return null
      **/
-     public function checkValidate(Request $request) {
+     public function displayUserDetail(Request $request) {
         //$email = $this->validateData($request->email);
         //$password = $this->validateData($request->password);
         $userData = Test::where('email',$request->email)
                          ->where('password',$request->password)
                          ->get();
-        //dd($userData);
         $user = $userData;
         if(count($user)) {
-            //dd($user);
             foreach($userData as $userData) {
-                //dd($userData->userId);
                 $userId = $userData->userId;
-                //dd($userId);
                 Session::setId($userId);
                 Session::set('sessionId', $userId);
                 Session::save();
@@ -92,31 +99,79 @@ class UserController extends Controller
         }
     }
     
-    
+    public function home()
+    {
+        if(Session::has('sessionId')) {
+            $userId = Session::get('sessionId');
+            $userData = Test::find($userId);
+            return view('display', ['userData' => $userData]);
+        }    
+    }
     /**
-     * Edit User Data
+     * Edit Current User Data
      * @return = null
      **/ 
-    public function editUserDetail($userId) {
+    public function editCurrentUserDetail($userId) {
         $userData = Test::where('userId', $userId)->get();
         //dd($userData);
-        return view('editUser', compact('userData'));
+        return view('editCurrentUser', compact('userData'));
+    }
+    /**
+     * Edit All User Data
+     * @return null
+     * @param null
+     **/
+    public function editUserDetail($userId) {
+        $userData = Test::where('userId', $userId)->get();
+         //$userId = $userData->userId;
+         //dd($userId);
+        Session::setId($userId);
+        Session::set('sessionEditId', $userId);
+        Session::save();
+        Session::get('sessionEditId');
+        if(Session::has('sessionEditId')) {
+        return view('editUser',['userData' => $userData]);
+        }
     }
     
-    
     /**
-     * Delete User
+     * Delete Current User
      * @param $uerId(number)
      * @return = null
      **/
-    public function deleteUserDetail($userId) {
-        //dd($userId);
+    public function deleteCurrentUserDetail($userId) {
         $user = Test::find($userId);
-        //dd($user);
         $user->delete();
-        return redirect('/');
+        return view('login');
     }
-    
+     /**
+     * Delete User
+     * @param $userId(number)
+     * @return = null
+     **/
+    public function deleteUserDetail($userId) {
+        $user = Test::find($userId);
+        $user->delete();
+        return redirect('/login/manageAllUser');
+    }
+    /**
+     * Update Current User Details
+     * @param 
+     * @return = null
+     **/
+    public function updateCurrentUserDetail(Request $request) {
+        if(Session::has('sessionId')) {
+            $userId = Session::get('sessionId');
+            $userData = Test::find($userId);
+            $userData->firstName = $request->firstName;
+            $userData->lastName = $request->lastName;
+            $userData->email = $request->email;
+            $userData->gender = $request->gender;
+            $userData->address = $request->address;
+            $userData->save();
+            return view('display', ['userData' => $userData]);
+        }
+    }
     
     /**
      * Update User Details
@@ -124,9 +179,8 @@ class UserController extends Controller
      * @return = null
      **/
     public function updateUserDetail(Request $request) {
-        
-        if(Session::has('sessionId')) {
-            $userId = Session::get('sessionId');
+        if(Session::has('sessionEditId')) {
+            $userId = Session::get('sessionEditId');
             //dd($userId);
             $userData = Test::find($userId);
             $userData->firstName = $request->firstName;
@@ -135,11 +189,35 @@ class UserController extends Controller
             $userData->gender = $request->gender;
             $userData->address = $request->address;
             $userData->save();
-            //dd($userData);
-            return view('display', ['userData' => $userData]);
+            $userData = Test::all();
+            return view('allUser', ['userData' => $userData]);
         }
     }
     
+    /**
+     * upload profile picture
+     * @param null
+     * @param null
+     **/
+    public function uploadPic(Request $request) {
+        $file = $request->file('profilePic');
+        //dd($file);
+        $destinationPath = base_path().'/public/profilePics'; // upload path
+        $extension = $file->getClientOriginalExtension(); // getting image extension
+        $fileName = $request->firstName.'.'.$extension; // renameing image
+        $file->move($destinationPath, $fileName);
+        $userData = Test::all();       
+        return view('allUser', ['userData' => $userData]);
+        
+    }
+    /**
+     * Search User
+     * @param null
+     * @return null
+     **/
+    public function searchUser() {
+        
+    }
     
     /**
      * Validate input data

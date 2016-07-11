@@ -1,10 +1,12 @@
+function home() {
+    $(location).attr("href", "/login/home");
+}
 /**
  *  Register New User
  *  @param null
  *  @return null
  **/
 function registerNewUser() {
-    //alert('hi');
     $(location).attr("href", "/login/new");
 }
 /**
@@ -16,22 +18,46 @@ function addNewUserDetail() {
     $(location).attr("href", "/login/new/add");
 }
 /**
- * Redirecting edit function to routes.php
+ * Search User
+ * @param null
+ * @return null
+ **/
+function searchUser() {
+    $(location).attr("href", "/login/user/search");
+}
+/**
+ * Redirecting edit function of current user to routes.php
  * @param {string} $userId
  * @returns null
  **/ 
-function editUserDetail($userId) {
+function editCurrentUserDetail($userId) {
     //alert($userId);
-    $(location).attr("href", "/login/edit/" + $userId);
+    $(location).attr("href", "/login/currentUser/edit/" + $userId);
     
 }
 /**
- * Redirecting delete function to routes.php
+ * Redirecting edit function of all User to routes.php
+ * @param {string} $userId
+ * @return null
+ **/
+function editUserDetail($userId) {
+    $(location).attr("href", "/login/edit/" + $userId);
+}
+/**
+ * Redirecting delete function of current user to routes.php
  * @param {string} $userId
  * @returns null
  **/
-function deleteUserDetail($userId) {
+function deleteCurrentUserDetail($userId) {
     //alert($userId);
+    $(location).attr("href", "/login/currentUser/delete/" + $userId);
+}
+/**
+ * Redirecting to delete function of all user to routes.php
+ * @param {string} $userId
+ * @return null
+ **/
+function deleteUserDetail($userId) {
     $(location).attr("href", "/login/delete/" + $userId);
 }
 /**
@@ -40,8 +66,32 @@ function deleteUserDetail($userId) {
  * @returns null
  **/
 function updateUserDetail() {
-    //alert();
     $(location).attr("href", "/login/update");
+}
+/**
+ * Manage All User
+ * @param null
+ * @return null
+ **/
+function allUser() {
+    $(location).attr("href", "/login/manageAllUser");
+}
+/**
+ * Upload pic
+ *
+ *
+ **/
+function uploadPic() {
+    //alert('');
+    $(location).attr("href","/upload");
+}
+/**
+ * Search User
+ * @param null
+ * @return null
+ **/
+function searchUser() {
+    $(location).attr("href", "/login/user/search");
 }
 /**
  * Logout User

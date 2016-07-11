@@ -8,7 +8,7 @@ use App\Http\Requests;
 
 class loginController extends Controller
 {
-      /**
+    /**
     * Fetching All User Data
     * @return = string(userData)
     **/
